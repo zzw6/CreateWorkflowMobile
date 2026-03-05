@@ -316,7 +316,7 @@ function QuickActions() {
   )
 }
 
-// ─── 分类卡片 ─────────────────────────────────────────────
+// ─── ���类卡片 ─────────────────────────────────────────────
 function CategoryCard({
   category,
   wfIcons,
@@ -401,13 +401,38 @@ export default function OAWorkbench({
 
   return (
     <div
-      className="min-h-screen relative"
+      className="min-h-screen relative overflow-hidden"
       style={{
         backgroundColor: BG_PAGE,
         backgroundImage:
           "radial-gradient(circle at 80% 10%, rgba(79,99,231,0.08) 0%, transparent 50%), radial-gradient(circle at 10% 90%, rgba(124,58,237,0.06) 0%, transparent 45%)",
       }}
     >
+      {/* 右下装饰大圆 */}
+      <div
+        className="absolute -bottom-24 -right-24 w-72 h-72 rounded-full pointer-events-none"
+        style={{ background: "rgba(79,99,231,0.07)" }}
+      />
+      {/* 左中装饰圆 */}
+      <div
+        className="absolute top-1/2 -left-16 w-48 h-48 rounded-full pointer-events-none"
+        style={{ background: "rgba(124,58,237,0.05)" }}
+      />
+      {/* 右中小圆 */}
+      <div
+        className="absolute top-1/3 -right-10 w-28 h-28 rounded-full pointer-events-none"
+        style={{ background: "rgba(79,99,231,0.06)" }}
+      />
+      {/* 散点 */}
+      <div
+        className="absolute top-64 left-6 w-4 h-4 rounded-full pointer-events-none"
+        style={{ background: "rgba(79,99,231,0.12)" }}
+      />
+      <div
+        className="absolute top-96 right-8 w-2.5 h-2.5 rounded-full pointer-events-none"
+        style={{ background: "rgba(124,58,237,0.15)" }}
+      />
+
       {/* 顶部 */}
       <Header user={currentUser} />
 
