@@ -105,8 +105,8 @@ function AppIcon({
       className="flex flex-col items-center gap-1.5 active:scale-95 transition-transform duration-100 focus:outline-none"
     >
       <div
-        className="w-13 h-13 rounded-2xl flex items-center justify-center"
-        style={{ backgroundColor: color + "1A" }}
+        className="rounded-2xl flex items-center justify-center"
+        style={{ backgroundColor: color + "1A", width: 52, height: 52, flexShrink: 0 }}
       >
         {icon ? (
           <img src={icon} alt={name} className="w-7 h-7 object-contain" />
@@ -141,7 +141,7 @@ function AppGrid({
 
   return (
     <div>
-      <div className="grid grid-cols-4 gap-y-4 gap-x-1">
+      <div className="grid grid-cols-4 gap-y-5 gap-x-2">
         {visibleItems.map((item) => (
           <AppIcon
             key={item.id}
