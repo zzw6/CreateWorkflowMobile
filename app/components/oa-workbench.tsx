@@ -205,19 +205,42 @@ function StatItem({
 function Header({ user }: { user: User }) {
   return (
     <div
-      className="relative px-4 pt-12 pb-8"
+      className="relative px-4 pt-12 pb-8 overflow-hidden"
       style={{
         background: `linear-gradient(135deg, ${BG_HEADER_FROM} 0%, ${BG_HEADER_TO} 100%)`,
       }}
     >
-      {/* 装饰圆圈 */}
+      {/* 装饰大圆 — 右上 */}
       <div
-        className="absolute top-4 right-6 w-20 h-20 rounded-full opacity-10"
-        style={{ background: "#fff" }}
+        className="absolute -top-10 -right-10 w-44 h-44 rounded-full"
+        style={{ background: "rgba(255,255,255,0.07)" }}
+      />
+      {/* 装饰中圆 — 右中 */}
+      <div
+        className="absolute top-16 -right-6 w-28 h-28 rounded-full"
+        style={{ background: "rgba(255,255,255,0.06)" }}
+      />
+      {/* 装饰小圆 — 左下 */}
+      <div
+        className="absolute -bottom-6 -left-8 w-32 h-32 rounded-full"
+        style={{ background: "rgba(255,255,255,0.05)" }}
+      />
+      {/* 装饰小圆点 — 左上 */}
+      <div
+        className="absolute top-6 left-24 w-5 h-5 rounded-full"
+        style={{ background: "rgba(255,255,255,0.15)" }}
       />
       <div
-        className="absolute top-12 right-14 w-10 h-10 rounded-full opacity-10"
-        style={{ background: "#fff" }}
+        className="absolute top-14 left-10 w-3 h-3 rounded-full"
+        style={{ background: "rgba(255,255,255,0.12)" }}
+      />
+      {/* 斜线光晕 */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(120deg, rgba(255,255,255,0.04) 0%, transparent 60%)",
+        }}
       />
 
       {/* 用户信息 */}
@@ -377,7 +400,14 @@ export default function OAWorkbench({
   }, [keyword, data])
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: BG_PAGE }}>
+    <div
+      className="min-h-screen relative"
+      style={{
+        backgroundColor: BG_PAGE,
+        backgroundImage:
+          "radial-gradient(circle at 80% 10%, rgba(79,99,231,0.08) 0%, transparent 50%), radial-gradient(circle at 10% 90%, rgba(124,58,237,0.06) 0%, transparent 45%)",
+      }}
+    >
       {/* 顶部 */}
       <Header user={currentUser} />
 
