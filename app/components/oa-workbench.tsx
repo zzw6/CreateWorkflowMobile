@@ -175,21 +175,21 @@ function AppGrid({
 function StatItem({
   label,
   count,
-  badgeColor,
+  accent,
 }: {
   label: string
   count: number
-  badgeColor: string
+  accent: string
 }) {
   return (
-    <div className="flex-1 flex flex-col items-center gap-1">
-      <div
-        className="w-10 h-10 rounded-full flex items-center justify-center text-white text-base font-bold"
-        style={{ backgroundColor: badgeColor }}
+    <div className="flex-1 flex flex-col items-center gap-0.5 py-2">
+      <span
+        className="text-2xl font-bold leading-none tabular-nums"
+        style={{ color: accent }}
       >
         {count}
-      </div>
-      <span className="text-xs text-white/70">{label}</span>
+      </span>
+      <span className="text-[11px] text-white/55 mt-1 tracking-wide">{label}</span>
     </div>
   )
 }
@@ -234,19 +234,17 @@ function Header({ user }: { user: User }) {
 
       {/* 待办统计卡片 */}
       <div
-        className="relative z-10 rounded-2xl px-4 py-3 flex items-center divide-x"
+        className="relative z-10 rounded-2xl flex items-stretch overflow-hidden"
         style={{
-          background: "rgba(255,255,255,0.12)",
-          borderColor: "rgba(255,255,255,0.15)",
-          border: "1px solid rgba(255,255,255,0.15)",
-          divideColor: "rgba(255,255,255,0.2)",
+          background: "rgba(255,255,255,0.10)",
+          border: "1px solid rgba(255,255,255,0.18)",
         }}
       >
-        <StatItem label="待办" count={user.todoCount} badgeColor="#F87171" />
-        <div className="w-px h-8 bg-white/20 mx-1" />
-        <StatItem label="已办" count={user.doneCount} badgeColor="#34D399" />
-        <div className="w-px h-8 bg-white/20 mx-1" />
-        <StatItem label="抄送" count={user.ccCount} badgeColor="#FBBF24" />
+        <StatItem label="待办" count={user.todoCount} accent="#FCA5A5" />
+        <div className="w-px my-3 flex-shrink-0" style={{ background: "rgba(255,255,255,0.18)" }} />
+        <StatItem label="已办" count={user.doneCount} accent="#6EE7B7" />
+        <div className="w-px my-3 flex-shrink-0" style={{ background: "rgba(255,255,255,0.18)" }} />
+        <StatItem label="抄送" count={user.ccCount} accent="#FDE68A" />
       </div>
 
       {/* 底部弧形过渡 */}
