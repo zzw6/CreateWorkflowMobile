@@ -234,14 +234,7 @@ function Header({ user }: { user: User }) {
         className="absolute top-14 left-10 w-3 h-3 rounded-full"
         style={{ background: "rgba(255,255,255,0.12)" }}
       />
-      {/* 斜线光晕 */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "linear-gradient(120deg, rgba(255,255,255,0.04) 0%, transparent 60%)",
-        }}
-      />
+
 
       {/* 用户信息 */}
       <div className="flex items-center justify-between mb-5 relative z-10">
@@ -409,12 +402,7 @@ export default function OAWorkbench({
           "radial-gradient(circle at 80% 10%, rgba(79,99,231,0.08) 0%, transparent 50%), radial-gradient(circle at 10% 90%, rgba(124,58,237,0.06) 0%, transparent 45%)",
       }}
     >
-      {/* 装饰圆 — z-0 确保不遮挡内容 */}
-      <div className="absolute -bottom-24 -right-24 w-72 h-72 rounded-full z-0 pointer-events-none" style={{ background: "rgba(79,99,231,0.07)" }} />
-      <div className="absolute top-1/2 -left-16 w-48 h-48 rounded-full z-0 pointer-events-none" style={{ background: "rgba(124,58,237,0.05)" }} />
-      <div className="absolute top-1/3 -right-10 w-28 h-28 rounded-full z-0 pointer-events-none" style={{ background: "rgba(79,99,231,0.06)" }} />
-      <div className="absolute top-64 left-6 w-4 h-4 rounded-full z-0 pointer-events-none" style={{ background: "rgba(79,99,231,0.12)" }} />
-      <div className="absolute top-96 right-8 w-2.5 h-2.5 rounded-full z-0 pointer-events-none" style={{ background: "rgba(124,58,237,0.15)" }} />
+
 
       {/* 内容层 — z-10 确保始终在装饰圆之上 */}
       <div className="relative z-10">
