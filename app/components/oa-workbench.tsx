@@ -105,13 +105,13 @@ function AppIcon({
       className="flex flex-col items-center gap-1.5 active:scale-95 transition-transform duration-100 focus:outline-none"
     >
       <div
-        className="rounded-2xl flex items-center justify-center"
-        style={{ backgroundColor: color + "1A", width: 52, height: 52, flexShrink: 0 }}
+        className="rounded-xl flex items-center justify-center"
+        style={{ backgroundColor: color + "1A", width: 44, height: 44, flexShrink: 0 }}
       >
         {icon ? (
-          <img src={icon} alt={name} className="w-7 h-7 object-contain" />
+          <img src={icon} alt={name} className="w-5 h-5 object-contain" />
         ) : (
-          <Icon style={{ width: 24, height: 24, color }} strokeWidth={1.7} />
+          <Icon style={{ width: 20, height: 20, color }} strokeWidth={1.7} />
         )}
       </div>
       <span className="text-[11px] text-gray-500 text-center leading-tight w-14 wf-title">
