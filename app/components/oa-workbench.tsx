@@ -271,14 +271,15 @@ function Header({ user }: { user: User }) {
         <StatItem label="抄送" count={user.ccCount} iconBg="#FBBF24" Icon={Mail} />
       </div>
 
-      {/* 底部弧形过渡 */}
-      <div
-        className="absolute bottom-0 left-0 right-0 h-5 pointer-events-none"
-        style={{
-          backgroundColor: BG_PAGE,
-          borderRadius: "20px 20px 0 0",
-        }}
-      />
+      {/* 底部弧形过渡 — 与页面背景色一致 */}
+      <svg
+        className="absolute bottom-0 left-0 w-full pointer-events-none"
+        viewBox="0 0 390 24"
+        preserveAspectRatio="none"
+        style={{ height: 24 }}
+      >
+        <path d="M0 24 Q195 0 390 24 L390 24 L0 24 Z" fill={BG_PAGE} />
+      </svg>
     </div>
   )
 }
@@ -293,7 +294,7 @@ const QUICK_ACTIONS = [
 function QuickActions() {
   return (
     <div
-      className="mx-4 mb-3 rounded-2xl p-3 shadow-sm"
+      className="mx-4 mb-3 rounded-2xl p-3"
       style={{ background: "#fff", border: "1px solid #E0E7FF" }}
     >
       <div className="grid grid-cols-3 gap-2">
@@ -326,7 +327,7 @@ function CategoryCard({
 }) {
   return (
     <div
-      className="rounded-2xl p-4 shadow-sm"
+      className="rounded-2xl p-4"
       style={{ background: "#fff", border: "1px solid #E0E7FF" }}
     >
       {/* 标题行 */}
@@ -408,30 +409,15 @@ export default function OAWorkbench({
           "radial-gradient(circle at 80% 10%, rgba(79,99,231,0.08) 0%, transparent 50%), radial-gradient(circle at 10% 90%, rgba(124,58,237,0.06) 0%, transparent 45%)",
       }}
     >
-      {/* 右下装饰大圆 */}
-      <div
-        className="absolute -bottom-24 -right-24 w-72 h-72 rounded-full pointer-events-none"
-        style={{ background: "rgba(79,99,231,0.07)" }}
-      />
-      {/* 左中装饰圆 */}
-      <div
-        className="absolute top-1/2 -left-16 w-48 h-48 rounded-full pointer-events-none"
-        style={{ background: "rgba(124,58,237,0.05)" }}
-      />
-      {/* 右中小圆 */}
-      <div
-        className="absolute top-1/3 -right-10 w-28 h-28 rounded-full pointer-events-none"
-        style={{ background: "rgba(79,99,231,0.06)" }}
-      />
-      {/* 散点 */}
-      <div
-        className="absolute top-64 left-6 w-4 h-4 rounded-full pointer-events-none"
-        style={{ background: "rgba(79,99,231,0.12)" }}
-      />
-      <div
-        className="absolute top-96 right-8 w-2.5 h-2.5 rounded-full pointer-events-none"
-        style={{ background: "rgba(124,58,237,0.15)" }}
-      />
+      {/* 装饰圆 — z-0 确保不遮挡内容 */}
+      <div className="absolute -bottom-24 -right-24 w-72 h-72 rounded-full z-0 pointer-events-none" style={{ background: "rgba(79,99,231,0.07)" }} />
+      <div className="absolute top-1/2 -left-16 w-48 h-48 rounded-full z-0 pointer-events-none" style={{ background: "rgba(124,58,237,0.05)" }} />
+      <div className="absolute top-1/3 -right-10 w-28 h-28 rounded-full z-0 pointer-events-none" style={{ background: "rgba(79,99,231,0.06)" }} />
+      <div className="absolute top-64 left-6 w-4 h-4 rounded-full z-0 pointer-events-none" style={{ background: "rgba(79,99,231,0.12)" }} />
+      <div className="absolute top-96 right-8 w-2.5 h-2.5 rounded-full z-0 pointer-events-none" style={{ background: "rgba(124,58,237,0.15)" }} />
+
+      {/* 内容层 — z-10 确保始终在装饰圆之上 */}
+      <div className="relative z-10">
 
       {/* 顶部 */}
       <Header user={currentUser} />
@@ -458,7 +444,7 @@ export default function OAWorkbench({
         </div>
       </div>
 
-      {/* 快捷操作（未搜索时显示） */}
+      {/* 快捷操��（未搜索时显示） */}
       {!keyword && <QuickActions />}
 
       {/* 搜索结果提示 */}
@@ -487,6 +473,8 @@ export default function OAWorkbench({
           ))}
         </div>
       )}
+
+      </div>{/* end z-10 wrapper */}
     </div>
   )
 }
