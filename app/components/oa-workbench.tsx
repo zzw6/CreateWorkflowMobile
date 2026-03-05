@@ -221,7 +221,7 @@ function Header({ user }: { user: User }) {
         </button>
       </div>
 
-      {/* 统计卡片 */}
+      {/* 统计��片 */}
       <div className="bg-white/15 rounded-2xl px-4 py-3 flex items-center divide-x divide-white/20">
         <StatBadge label="待办" count={user.todoCount} color="#fff" />
         <StatBadge label="已办" count={user.doneCount} color="#fff" />
@@ -242,13 +242,12 @@ const QUICK_ACTIONS = [
   { label: "我的待办", Icon: ClipboardList, color: "#1a9fd8" },
   { label: "我发起的", Icon: FileText, color: "#B37BFA" },
   { label: "已办事项", Icon: Star, color: "#36C78D" },
-  { label: "通知公告", Icon: Bell, color: "#FF7A4D" },
 ]
 
 function QuickActions() {
   return (
     <div className="mx-4 mb-3 bg-white rounded-2xl p-3 shadow-sm border border-[#e8f3fb]">
-      <div className="grid grid-cols-4 gap-2">
+      <div className="grid grid-cols-3 gap-2">
         {QUICK_ACTIONS.map(({ label, Icon, color }) => (
           <button
             key={label}
@@ -268,26 +267,7 @@ function QuickActions() {
   )
 }
 
-// ─── 通知横幅 ─────────────────────────────────────────────
-function NoticeBanner({ notices }: { notices: string[] }) {
-  const [idx, setIdx] = useState(0)
-  return (
-    <div
-      className="mx-4 mb-3 bg-white rounded-xl px-3 py-2 flex items-center gap-2 shadow-sm border border-[#e8f3fb]"
-    >
-      <div className="flex-shrink-0 bg-[#1a9fd8]/10 rounded-md px-1.5 py-0.5">
-        <span className="text-[10px] font-semibold text-[#1a9fd8]">公告</span>
-      </div>
-      <p
-        className="flex-1 text-xs text-gray-500 truncate cursor-pointer"
-        onClick={() => setIdx((i) => (i + 1) % notices.length)}
-      >
-        {notices[idx]}
-      </p>
-      <ChevronRight className="w-3.5 h-3.5 text-gray-300 flex-shrink-0" />
-    </div>
-  )
-}
+
 
 // ─── 主组件 ───────────────────────────────────────────────
 export default function OAWorkbench({
@@ -327,12 +307,6 @@ export default function OAWorkbench({
       .filter((category) => category.wfbeans.length > 0)
   }, [keyword, data])
 
-  const mockNotices = [
-    "关于2025年春节放假安排的通知",
-    "关于加强信息安全管理的通知",
-    "关于Q4绩效考核工作安排",
-  ]
-
   return (
     <div className="min-h-screen bg-[#f0f6fb]">
       {/* 顶部 */}
@@ -351,13 +325,8 @@ export default function OAWorkbench({
         </div>
       </div>
 
-      {/* 快捷操作 & 公告（只在未搜索时显示） */}
-      {!keyword && (
-        <>
-          <QuickActions />
-          <NoticeBanner notices={mockNotices} />
-        </>
-      )}
+      {/* 快捷操作（只在未搜索时显示） */}
+      {!keyword && <QuickActions />}
 
       {/* 分区标题（搜索时显示） */}
       {keyword && (
