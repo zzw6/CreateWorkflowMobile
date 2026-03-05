@@ -12,15 +12,15 @@ export interface Category {
 }
 
 export const MOCK_COLORS = [
-  "#1a9fd8", "#B37BFA", "#FF7A4D", "#36C78D",
-  "#FFC62E", "#E94D4D", "#8DCE36", "#4A90E2"
+  "#2B3CC8", "#7C3AED", "#0891B2", "#059669",
+  "#D97706", "#DC2626", "#0284C7", "#4F63E7"
 ]
 
 export const MOCK_CATEGORIES: Category[] = [
   {
     id: "1",
     typeName: "人事管理",
-    color: "#1a9fd8",
+    color: "#2B3CC8",
     wfbeans: [
       { id: "101", name: "入职申请", spell: "rzSQ" },
       { id: "102", name: "转正申请", spell: "zzSQ" },
@@ -34,7 +34,7 @@ export const MOCK_CATEGORIES: Category[] = [
   {
     id: "2",
     typeName: "行政审批",
-    color: "#B37BFA",
+    color: "#7C3AED",
     wfbeans: [
       { id: "201", name: "请假申请", spell: "qjSQ" },
       { id: "202", name: "加班申请", spell: "jbSQ" },
@@ -47,7 +47,7 @@ export const MOCK_CATEGORIES: Category[] = [
   {
     id: "3",
     typeName: "财务报销",
-    color: "#FF7A4D",
+    color: "#0891B2",
     wfbeans: [
       { id: "301", name: "费用报销", spell: "fyBX" },
       { id: "302", name: "差旅报销", spell: "clBX" },
@@ -59,7 +59,7 @@ export const MOCK_CATEGORIES: Category[] = [
   {
     id: "4",
     typeName: "IT运维",
-    color: "#36C78D",
+    color: "#059669",
     wfbeans: [
       { id: "401", name: "账户申请", spell: "zhSQ" },
       { id: "402", name: "VPN申请", spell: "vpnSQ" },
@@ -71,7 +71,7 @@ export const MOCK_CATEGORIES: Category[] = [
   {
     id: "5",
     typeName: "培训发展",
-    color: "#FFC62E",
+    color: "#D97706",
     wfbeans: [
       { id: "501", name: "培训申请", spell: "pxSQ" },
       { id: "502", name: "云课堂报名", spell: "yktBM" },
@@ -82,7 +82,7 @@ export const MOCK_CATEGORIES: Category[] = [
   {
     id: "6",
     typeName: "合规法务",
-    color: "#E94D4D",
+    color: "#DC2626",
     wfbeans: [
       { id: "601", name: "合同审批", spell: "htSP" },
       { id: "602", name: "资质申报", spell: "zzSB" },
