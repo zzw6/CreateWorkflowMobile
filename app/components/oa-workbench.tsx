@@ -264,15 +264,6 @@ function Header({ user }: { user: User }) {
         <StatItem label="抄送" count={user.ccCount} iconBg="#FBBF24" Icon={Mail} />
       </div>
 
-      {/* 底部弧形过渡 — 与页面背景色一致 */}
-      <svg
-        className="absolute bottom-0 left-0 w-full pointer-events-none"
-        viewBox="0 0 390 24"
-        preserveAspectRatio="none"
-        style={{ height: 24 }}
-      >
-        <path d="M0 24 Q195 0 390 24 L390 24 L0 24 Z" fill={BG_PAGE} />
-      </svg>
     </div>
   )
 }
@@ -407,60 +398,60 @@ export default function OAWorkbench({
       {/* 内容层 — z-10 确保始终在装饰圆之上 */}
       <div className="relative z-10">
 
-      {/* 顶部 */}
-      <Header user={currentUser} />
+        {/* 顶部 */}
+        <Header user={currentUser} />
 
-      {/* 搜索栏 */}
-      <div className="px-4 pt-3 pb-3">
-        <div className="relative">
-          <Search
-            className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4"
-            style={{ color: BRAND_LIGHT }}
-          />
-          <Input
-            placeholder="搜索功能"
-            value={keyword}
-            onChange={(e) => setKeyword(e.target.value)}
-            className="w-full h-9 pl-9 pr-4 rounded-xl text-sm placeholder:text-gray-400 text-gray-700 shadow-sm focus-visible:ring-1"
-            style={{
-              background: "#fff",
-              border: "1px solid #C7D2FE",
-              // @ts-ignore
-              "--tw-ring-color": BRAND_LIGHT + "66",
-            }}
-          />
-        </div>
-      </div>
-
-      {/* 快捷操��（未搜索时显示） */}
-      {!keyword && <QuickActions />}
-
-      {/* 搜索结果提示 */}
-      {keyword && (
-        <div className="px-4 pb-1">
-          <p className="text-xs text-gray-400">
-            搜索「{keyword}」的结果（{filteredData.reduce((s, c) => s + c.wfbeans.length, 0)} 个）
-          </p>
-        </div>
-      )}
-
-      {/* 分类列表 */}
-      {filteredData.length === 0 ? (
-        <div className="mx-4 mt-16 flex flex-col items-center gap-3" style={{ color: "#C7D2FE" }}>
-          <Search className="w-12 h-12 opacity-50" />
-          <span className="text-sm text-gray-400">未找到相关功能</span>
-        </div>
-      ) : (
-        <div className="px-4 flex flex-col gap-3 pb-10">
-          {filteredData.map((category) => (
-            <CategoryCard
-              key={category.id}
-              category={category}
-              wfIcons={wfIcons}
+        {/* 搜索栏 */}
+        <div className="px-4 pt-3 pb-3">
+          <div className="relative">
+            <Search
+              className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4"
+              style={{ color: BRAND_LIGHT }}
             />
-          ))}
+            <Input
+              placeholder="搜索功能"
+              value={keyword}
+              onChange={(e) => setKeyword(e.target.value)}
+              className="w-full h-9 pl-9 pr-4 rounded-xl text-sm placeholder:text-gray-400 text-gray-700 shadow-sm focus-visible:ring-1"
+              style={{
+                background: "#fff",
+                border: "1px solid #C7D2FE",
+                // @ts-ignore
+                "--tw-ring-color": BRAND_LIGHT + "66",
+              }}
+            />
+          </div>
         </div>
-      )}
+
+        {/* 快捷操��（未搜索时显示） */}
+        {!keyword && <QuickActions />}
+
+        {/* 搜索结果提示 */}
+        {keyword && (
+          <div className="px-4 pb-1">
+            <p className="text-xs text-gray-400">
+              搜索「{keyword}」的结果（{filteredData.reduce((s, c) => s + c.wfbeans.length, 0)} 个）
+            </p>
+          </div>
+        )}
+
+        {/* 分类列表 */}
+        {filteredData.length === 0 ? (
+          <div className="mx-4 mt-16 flex flex-col items-center gap-3" style={{ color: "#C7D2FE" }}>
+            <Search className="w-12 h-12 opacity-50" />
+            <span className="text-sm text-gray-400">未找到相关功能</span>
+          </div>
+        ) : (
+          <div className="px-4 flex flex-col gap-3 pb-10">
+            {filteredData.map((category) => (
+              <CategoryCard
+                key={category.id}
+                category={category}
+                wfIcons={wfIcons}
+              />
+            ))}
+          </div>
+        )}
 
       </div>{/* end z-10 wrapper */}
     </div>
